@@ -17,7 +17,7 @@ setup(
     python_requires=">=3.6",
     author = "Mr.Pinyoo Thotaboot",
     author_email = "pinyoo.too@gmail.com",
-    description = "This converst number to thai text lib",
+    description = "This convert number to thai text lib",
     long_description = long_description,
     long_description_content_type = "text/markdown",
     url="https://github.com/pinyoothotaboot/num-thai",
