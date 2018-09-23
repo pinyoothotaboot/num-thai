@@ -226,7 +226,10 @@ class NumThai:
             ls[0] = ls[0].replace(str(ls[0]),str('('*(count)+ls[0]))
 
         # แปลงรูปแบบ String ให้เป็นผลลัพธ์แบบตัวเลข
-        result = eval(str(''.join(ls)))
+        if ls:
+            result = eval(str(''.join(ls)))
+        else:
+            raise ValueError("ไม่มีข้อมูล ค่ะ")
 
         total_result = ''
 
