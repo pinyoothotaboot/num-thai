@@ -26,7 +26,11 @@ from num_thai.thainumbers import NumThai
 num = NumThai()
 text = num.NumberToTextThai(1111111111111111)
 
-print(text)
+number = num.TextThaiToNumber("ลบสามสิบเอ็ดจุดแปดหก")
+
+print("Text is ",text)
+
+print("Number is ",number)
 
 ```
 
