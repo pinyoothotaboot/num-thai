@@ -4,6 +4,7 @@ The tool is a convert number to thai text : **Python 3.6+**.
 
 # Features
 - Convert number integer or float to Thai text.
+- Convert thai text to number.
 
 # Setup
 - Check version Python and PIP
@@ -34,4 +35,4 @@ print(text)
 - Support digit length 1 - 16 digit.
 - Support minus digit.
 - Support integer or float number.
-
+- Support thai text
