@@ -8,11 +8,11 @@ class NumThai:
 
         self.number = None
         self.num_text = {
-                        '-': "ລົບ", '.': "จุด", 0: "ศูนย์", 1: "ໜຶ່ງ",
+                        '-': "ລົບ", '.': "จุด", 0: "ศูนย์", 1: "หนื่ง",
                         2: "ສອງ", 3: "สาม", 4: "สี่", 5: "ห้า",
                         6: "หก", 7: "เจ็ด", 8: "แปด", 9: "เก้า",
                         "0": "", "1": "สิบ", "2": "ร้อย", "3": "พัน",
-                        "4": "หมื่น", "5": "แสน", "6": "ລ້ານ"
+                        "4": "หมื่น", "5": "แสน", "6": "ล้าน"
                     }
 
     def process_int(self):
@@ -30,7 +30,7 @@ class NumThai:
                     if n == 1 and le < 8:
                         result.append(self.num_text[n]+val)
                     elif n == 1 and le > 7:
-                        result.append("ເອັດ"+val)
+                        result.append("เอ็ด"+val)
                     else:
                         if n != 0:
                             result.append(self.num_text[n]+val)
@@ -38,7 +38,7 @@ class NumThai:
                             result.append(val)
 
                 elif x == 0 and n == 1:
-                    result.append("ເອັດ")
+                    result.append("เอ็ด")
                 else:
                     if i == 1 and n == 1:
                         result.append(self.num_text[str(i)])
@@ -64,7 +64,7 @@ class NumThai:
         Input       : Number
         Return      : Thai text
         Example     : NumberToTextThai(110)
-                    >> ["ໜຶ່ງร้อย","สิบ"]
+                    >> ["หนื่งร้อย","สิบ"]
     """
     def NumberToTextThai(self, number):
 
@@ -106,7 +106,7 @@ class NumThai:
         Description : This function to convert thai text to number.
         Input       : Thai text
         Return      : Number
-        Example     : TextThaiToNumber("ໜຶ່ງร้อยสิบจุดสามສອງໜຶ່ງ")
+        Example     : TextThaiToNumber("หนื่งร้อยสิบจุดสามสองหนื่ง")
                     >> 110.321
     """
 
@@ -185,19 +185,19 @@ class NumThai:
     
             float_text = ''.join(fl)
 
-        # ค้นหาคำว่าລົບ
+        # ค้นหาคำว่าลบ
         obj_minus = re.search(r"ລົບ", txt, re.M | re.I)
 
         minus = ''
 
-        # ถ้าพบคำว่า (ລົບ)
+        # ถ้าพบคำว่า (ลบ)
         if obj_minus:
             minus = '-'
             txt = re.sub(r"ລົບ", "", txt)
         # หาคำในหลักสิบที่มากกว่า 20 ขึ้นไป
         for i in deci:
             txt = re.sub(str(i), '+%s' % str(deci[i]), txt)
-        # หาคำในหลักหน่วยหรือคำที่เป็นเลข 1-9 รวมคำว่า ເອັດ
+        # หาคำในหลักหน่วยหรือคำที่เป็นเลข 1-9 รวมคำว่า เอ็ด
         for i in unit_text:
             txt = re.sub(str(i), '+%s' % str(unit_text[i]), txt)
         # หาคำที่อยู๋่ในหลักสิบ 10 -19
@@ -213,7 +213,7 @@ class NumThai:
         ls = list(txt)
 
         count = 0
-        # ถ้าหน่วยมีหลักລ້ານขึ้น ให้นับจำนวน วงเล็บปิด
+        # ถ้าหน่วยมีหลักล้านขึ้น ให้นับจำนวน วงเล็บปิด
         for x in range(len(ls)):
             if ls[x] == ')':
                 count += 1
